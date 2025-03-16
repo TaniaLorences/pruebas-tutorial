@@ -1,9 +1,12 @@
 import './App.css';
-import BotonCambiaTexto from './BotonCambiaTexto';
+import CampoNombre from './CampoNombre';
 
 function App() {
   return (
-      <BotonCambiaTexto></BotonCambiaTexto>
+    <>
+      <h1>Learn react</h1>
+      <CampoNombre></CampoNombre>
+      </>
   );
 }
 
