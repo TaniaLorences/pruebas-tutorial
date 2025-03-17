@@ -4,9 +4,7 @@ function CampoNombre() {
     const [nombre, setNombre] = React.useState('');
     return (
       <input
-        placeholder="Nombre"
-        value={nombre}
-        onChange={(e) => setNombre(e.target.value)}
+        placeholder="Nombre" value={nombre} onChange={(e) => setNombre(e.target.value)}
       />
     );
   }
