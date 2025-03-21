@@ -6,7 +6,7 @@ import PruebaQuinielas from './PruebaQuinielas';
 test("La suma de cada apuesta da 100", () => {
 
     // Test para ver si la suma de cada apuesta es 100: p["1"]+p["Z"]+p["2"]
-    // Me da error, no vale
+   
     render(<PruebaQuinielas/>);
     const apuestas1 = screen.findAllByTestId("apuesta1"); // es asíncrono, no podemos usar getAllByTestId() si no FINDAllByTestId
     const apuestasX = screen.findAllByTestId('apuestaX'); // obtenemos un array de nodos, no se puede usar textContent() aquí
