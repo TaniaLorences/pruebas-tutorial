@@ -1,14 +1,12 @@
 import './App.css';
-import ProviderMio from './PruebaQuinielas/ProviderMio';
-import PruebaQuinielas from './PruebaQuinielas/PruebaQuinielas';
+import FormularioMio from './ValidateForm/FormularioMio';
 
 function App() {
+
   return (
     <>
       {/* <h1>Learn react</h1> */}
-      <ProviderMio>
-        <PruebaQuinielas></PruebaQuinielas>
-      </ProviderMio>
+     <FormularioMio/>
 
       </>
   );
