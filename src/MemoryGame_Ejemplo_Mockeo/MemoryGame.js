@@ -3,12 +3,21 @@ import React, { useEffect, useState } from 'react';
 const MemoryGame = () => {
   const [cards, setCards] = useState([]);
 
-  useEffect(() => {
-    fetch('/api/cards')
-      .then((response) => response.json())
-      .then((data) => setCards(data))
-      .catch((error) => console.error('Error fetching cards:', error));
-  }, []);
+  const cargarCartas = async () => {
+    try {
+      const response = await fetch('/api/cards');
+      const data = await response.json();
+      setCards(data);
+    } catch (error) {
+      console.error("Error al cargar las cartas", error);
+      setCards([]);             // Si hay un error se vacía el array de cartas.
+    }
+  }
+
+useEffect(() => {
+  cargarCartas();
+}, [])
+
 
   return (
     <div>

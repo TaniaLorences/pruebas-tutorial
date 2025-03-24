@@ -1,4 +1,3 @@
-import { render, screen } from "@testing-library/react";
 import ValidateMio from "./ValidateFormMio";
 // import ValidateMio from "./ValidateFormMio";
 // ValidateMio es una función, no un componente react, no renderiza nada en el DOM

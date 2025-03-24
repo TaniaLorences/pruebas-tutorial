@@ -23,11 +23,10 @@ describe('MemoryGame Component', () => { // Describe el conjunto de tests para M
 
     afterEach(() => { // Se ejecuta después de cada test
         // Limpia el mock de fetch para evitar efectos secundarios en otros tests
-        global.fetch.mockClear();
-        delete global.fetch; // Elimina el mock de fetch
+        jest.restoreAllMocks();      // Elimina el mock de fetch
     });
 
-    it('debería mostrar las cartas obtenidas de la API', async () => { // Test para verificar la carga exitosa de cartas
+    test('debería mostrar las cartas obtenidas de la API', async () => { // Test para verificar la carga exitosa de cartas
         render(<MemoryGame />); // Renderiza el componente MemoryGame
 
         // Espera a que las cartas se carguen y se muestren en el DOM
@@ -40,7 +39,7 @@ describe('MemoryGame Component', () => { // Describe el conjunto de tests para M
         expect(screen.getAllByTestId('card').length).toBe(2);
     });
 
-    it('debería manejar el error si la URL no es encontrada', async () => { // Test para verificar el manejo de errores
+    test('debería manejar el error si la URL no es encontrada', async () => { // Test para verificar el manejo de errores
         // Se vuelve a mockear global.fetch para que devuelva la respuesta correcta en la primera renderización.
         global.fetch = jest.fn((url) => {
             if (url === '/api/cards') {
@@ -54,7 +53,7 @@ describe('MemoryGame Component', () => { // Describe el conjunto de tests para M
             return Promise.reject(new Error('URL no encontrada'));
         });
 
-        render(<MemoryGame />); // Renderiza el componente MemoryGame
+        render(<MemoryGame />);                // Renderiza el componente MemoryGame
         await waitFor(() => {
             expect(screen.getByText('Card 1')).toBeInTheDocument();
         });
@@ -67,7 +66,9 @@ describe('MemoryGame Component', () => { // Describe el conjunto de tests para M
         render(<MemoryGame />); // Renderiza el componente MemoryGame
         // Verifica que Card 1 ya no se encuentre en el documento, al volver a renderizar con un error.
         await waitFor(() => {
-            expect(screen.getByText('Card 1')).not.toBeInTheDocument();
+
+            expect(screen.getAllByTestId("card").length).toBe(0);
+            //expect(screen.getByText('Card 1')).not.toBeInTheDocument();
         })
     });
 });
