@@ -1,3 +1,5 @@
+// Cambiar este componente, NuevaApuesta es con TODOS los partidos no solo uno nuevo (no estoy de echar quinielas y se nota :D )
+
 import React, { useState } from "react";
 
 function NuevoPartidoBorrar({handler}){
